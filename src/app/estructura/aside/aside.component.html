@@ -1,0 +1,99 @@
+ <!-- Main Sidebar Container -->
+ <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#DBDBDB;">
+    <!-- Brand Logo -->
+     
+    <a>
+      <img src="../../../assets/dist/img/DigitalShop.png" alt="AdminLTE Logo" 
+       width="100%" >  
+    </a>
+ 
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info" >
+          <a href="#" class="d-block" style="color:black;">{{nombre}}</a>
+        </div>
+      </div>
+  
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+  
+               <li class="nav-item">
+                <a [routerLink]="['/dashboard']" class="nav-link" style="color:black;">
+                  <i class="fas fa-store-alt" style="color:black;"></i>
+                  <p>
+                    dashboard
+                  </p>
+                </a>
+              </li>
+  
+          <li class="nav-item" *ngIf="rol!='invitado'">
+            <a [routerLink]="['/producto']" class="nav-link" style="color:black;">
+              <i class="fas fa-search" style="color: black;"></i>
+              <p>
+                producto
+              </p>
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a [routerLink]="['/ofertas']" class="nav-link" style="color: black;">
+              <i class="fas fa-running" style="color: black;"></i>
+              <p>
+                ofertas
+              </p>
+            </a>
+          </li>
+  
+          <li class="nav-item" *ngIf="rol!='invitado'" >
+            <a [routerLink]="['/categoria']" class="nav-link" style="color:black;">
+              <i class="fas fa-list" style="color:  black;"></i>
+              <p>
+                categoria
+              </p>
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a [routerLink]="['/cliente']" class="nav-link" style="color:black;">
+              <i class="fas fa-user" style="color:black;"></i>
+              <p>
+                cliente
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['/carrito']" class="nav-link" style="color:black;">
+              <i class="fas fa-shipping-fast" style="color: black;"></i>
+              <p>
+                carrito
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['/pedido']" class="nav-link" style="color: black;">
+              <i class="fas fa-upload" style="color:black;"></i>
+              <p>
+                pedido
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item" *ngIf="rol!='invitado'">
+            <a [routerLink]="['/usuario']" class="nav-link" style="color:black;">
+              <i class="fas fa-user-lock" style="color: black;"></i>
+              <p>
+                usuario
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

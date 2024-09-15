@@ -1,0 +1,78 @@
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">pedido</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">pedido</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <section class="content">
+    <div class="container-fluid">  
+      <hr>
+      <input type="button" value="insertar pedido" class="btn btn-warning" (click)="insertar()">
+      <hr>
+      <div id="tabla">
+        <div class="row">
+          <div class=" col-lg-1"></div>
+          <div class="col-lg-11">
+            <div class="table-responsive">
+              <table class="table">
+                <tr>
+                  <th>NO. cliente</th>
+                  <th>fecha</th>
+                  <th>estado</th>
+                  <th>acciones</th>
+                </tr>
+                <tr *ngForm="let item of cliente">
+                  <td style="color: red; font-weight: bold;">{{item.id_cliente}}</td>
+                  <td>{{item.fecha}}</td>
+                  <td>{{item.estado}}</td>
+                  <td>
+                    <input type="button" class="btn btn-outline-success btn-sm" value=" ver producto" (click)="mostrar_modal(1, item.id_pedido)">
+                  </td>
+                  <td>{{item.acciones}}</td>
+                  <td>
+                    <span class="fas fa-edit" style="color: blue;cursor: pointer" title="editar"></span>
+                    <span class="fas fa-minus-square" style="color: red;cursor: pointer" title="eliminar"></span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>    
+  </div>
+  </section>
+
+  <!--modal-->
+  <div id="verproducto" *ngIf="modal==true">
+    <table class="table">
+      <tr>
+        <th>id_pedido</th>
+        <th>fecha</th>
+        <th>estado</th>
+        <th>id_cliente</th>
+      </tr>
+      <tr *ngFor="let itemp of producto">
+        <th>{{itemp[0]}}</th>
+        <th>{{itemp[1]}}</th>
+        <th>{{itemp[2]}}</th>
+        <th>{{itemp[3]}}</th>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+        <td><b>TOTAL:</b></td>
+        <td>{{total | currency}}</td>
+      </tr>
+    </table>
+    <input type="button" class="btn btn-secondary" value="cerrar" (click)="mostrar_modal(0, 1)">
+  </div>

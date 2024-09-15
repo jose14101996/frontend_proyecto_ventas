@@ -1,0 +1,123 @@
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">producto</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">producto</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <section class="content">
+    <div class="container-fluid">  
+      <!--contenido-->
+      <hr>
+      <input type="button" value="Insertar producto" class="btn btn-warning" (click)="mostrar_form('ver')"><hr>
+      <!--formulario-->
+      <div id="formulario" *ngIf="mform==true">
+        <form >
+          <div class="row">
+            <div class="col-lg-6">
+              <input type="text" class="form-control" placeholder="id_producto" [(ngModel)]="obj_producto.id_producto">
+              <span style="color: red;" *ngIf="validar_id_producto==false">insertar id_producto</span>
+            </div>
+
+            <div class="col-lg-6">
+              <input type="text" class="form-control" placeholder="nombre" [(ngModel)]="obj_producto.nombre">
+              <span style="color: red;" *ngIf="validar_nombre==false">insertar nombre</span>
+            </div>
+          
+
+            <div class="col-lg-6">
+            <input type="text" class="form-control" placeholder="descripcion" [(ngModel)]="obj_producto.descripcion">
+            <span style="color: red;" *ngIf="validar_descripcion==false">insertar descripcion</span>
+            </div>
+
+            <div class="col-lg-6">
+            <input type="number" class="form-control" placeholder="precio" [(ngModel)]="obj_producto.precio">
+            <span style="color: red;" *ngIf="validar_precio==false">insertar precio</span>
+            </div>
+
+            <div class="col-lg-6">
+            <input type="number" class="form-control" placeholder="stock" [(ngModel)]="obj_producto.stock">
+            <span style="color: red;" *ngIf="validar_stock==false">insertar stock</span>
+            </div>
+
+            <div class="col-lg-6">
+              <select class="form-control form-select" [(ngModel)]="obj_producto.id_categoria">
+                <option value="0" label="seleccionar categoria" selected="selected">seleccionar categoria</option>
+                <option *ngFor="let itemc of categoria" value="{{itemc.id_categoria}}">{{itemc.nombre}}</option>
+              </select>
+              <span style="color: red;" *ngIf="validar_id_categoria==false">seleccionar id_categoria</span>
+            </div>
+
+            <div class="col-lg-6">
+              <select class="form-control form-select" [(ngModel)]="obj_producto.id_oferta">
+                <option value="0" label="seleccionar oferta" selected="selected">seleccionar oferta</option>
+                <option *ngFor="let itemo of ofertas" value="{{itemo.id_ofertas}}">{{itemo.nombre}}</option>
+              </select>
+              <span style="color: red;" *ngIf="validar_id_oferta==false">seleccionar id_oferta</span>
+            </div>
+          </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <br>
+                <input type="button" value="Guardar" class="btn btn-primary"
+                style="width: 100%;" (click)="validar('guardar')" *ngIf="botones_form==false">
+                <input type="button" value="editar" class="btn btn-primary"
+                style="width: 100%;" (click)="validar('editar')" *ngIf="botones_form==true">
+              </div>
+            
+              <div class="col-lg-6">
+                <br>
+                <input type="button" value="Cancelar" class="btn btn-secondary"
+                style="width: 100%;" (click)="mostrar_form('no ver')">
+              </div>
+            </div>
+        </form>
+      </div>
+      <hr>
+      <div id="tabla">
+        <div class="row">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-10">
+            <div class="table-responsive">
+              <table class="table">
+                <tr>
+                     <th>id_producto</th>
+                     <th>nombre</th>
+                     <th>precio</th>
+                     <th>stock</th>
+                     <th>id_categoria</th>
+                </tr>
+                <!--OJOOOOOO POSIBLE ERROR-->
+                <tr *ngFor="let item of producto">
+                     <td>{{item.id_producto}}</td>
+                     <td>{{item.nombre}}</td>
+                     <td>{{item.precio}}</td>
+                     <td>{{item.stock}}</td>
+                     <td>{{item.id_categoria}}</td>
+                     <td>
+                      <span class="fas fa-edit" style="color: blue; cursor: pointer;" title="editar" (click)="cargar_datos(item, item.id_producto)"></span>
+                      <span class="fas fa-minus-square" style="color: red; cursor: pointer;" title="eliminar"  (click)="eliminar(item.id_producto)"></span>
+                     </td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+          <div class="col-lg-1"></div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>

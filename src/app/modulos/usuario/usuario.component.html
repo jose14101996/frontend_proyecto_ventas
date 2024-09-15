@@ -1,0 +1,109 @@
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">usuario</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">usuario</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <section class="content">
+    <div class="container-fluid">  
+      <!--contenido-->
+      <hr>
+      <input type="button" value="Insertar usuario" class="btn btn-warning" (click)="mostrar_form('ver')"><hr>
+      <!--formulario-->
+      <div id="formulario" *ngIf="mform==true">
+        <form>
+          <div class="row">
+            <div class="col-lg-6">
+              <input type="text" class="form-control" placeholder="id_usuario" [(ngModel)]="obj_usuario.id_usuario">
+              <span style="color: red;" *ngIf="validar_id_usuario==false">insertar id_usuario</span>
+            </div>
+
+            <div class="col-lg-6">
+              <input type="text" class="form-control" placeholder="nombres" [(ngModel)]="obj_usuario.nombres">
+              <span style="color: red;" *ngIf="validar_nombres==false">insertar nombres</span>
+            </div>
+
+            <div class="col-lg-6">
+              <br>
+              <input type="text" class="form-control" placeholder="id_apellidos" [(ngModel)]="obj_usuario.apellidos">
+              <span style="color: red;" *ngIf="validar_apellidos==false">insertar apellidos</span>
+            </div>
+
+            <div class="col-lg-6">
+              <br>
+              <input type="text" class="form-control" placeholder="email" [(ngModel)]="obj_usuario.email">
+              <span style="color: red;" *ngIf="validar_email==false">insertar email</span>
+            </div>
+
+            <div class="col-lg-6">
+              <br>
+              <input type="text" class="form-control" placeholder="rol" [(ngModel)]="obj_usuario.rol">
+              <span style="color: red;" *ngIf="validar_rol==false">insertar contraseña</span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <br>
+              <input type="button" value="Guardar" class="btn btn-primary"
+              style="width: 100%;" (click)="validar('guardar')" *ngIf="botones_form==false">
+              <input type="button" value="editar" class="btn btn-primary"
+              style="width: 100%;"(click)="validar('editar')" *ngIf="botones_form==true">
+            </div>
+          
+            <div class="col-lg-6">
+              <br>
+              <input type="button" value="Cancelar" class="btn btn-secondary"
+              style="width: 100%;" (click)="mostrar_form('no ver')">
+            </div>
+          </div>
+        </form>
+      </div>
+      <hr>
+      <div id="tabla">
+        <div class="row">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-10">
+            <div class="table-responsive">
+              <table class="table">
+                <tr>
+                     <th>id_usuario</th>
+                     <th>nombre</th>
+                     <th>clave</th>
+                     <th>tipo_usuario</th>
+                </tr>
+                <!--OJOOOOOO POSIBLE ERROR-->
+                <tr *ngFor="let item of usuario">
+                     <td>{{item.id_usuario}}</td>
+                     <td>{{item.nombre}}</td>
+                     <td>{{item.clave}}</td>
+                     <td>{{item.tipo_usuario}}</td>
+                     <!--<td>{{item.contraseña}}</td>-->
+                     <td>{{item.rol}}</td>
+                     <td>
+                      <span class="fas fa-edit" style="color: blue; cursor: pointer;" title="editar" (click)="cargar_datos(item, item.id_usuario)"></span>
+                      <span class="fas fa-minus-square" style="color: red; cursor: pointer;" title="eliminar"  (click)="eliminar(item.id_usuario)"></span>
+                     </td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+          <div class="col-lg-1"></div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
